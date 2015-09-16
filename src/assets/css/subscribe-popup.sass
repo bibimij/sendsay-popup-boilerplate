@@ -1,0 +1,121 @@
+@media (max-width: 449px), (max-height: 660px)
+  .subscribe-popup,
+  .subscribe-popup-background
+    display: none!important
+
+.subscribe-popup-background
+  opacity: .6
+  background: #000
+  position: fixed
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  display: none
+  z-index: 1000
+
+.subscribe-popup
+  width: 380px
+  height: 600px
+  position: fixed
+  top: 50%
+  left: 50%
+  display: none
+  z-index: 10000
+
+  .subscribe-popup-close
+    background: #0000ff
+    display: block
+    width: 30px
+    height: 30px
+    -webkit-border-radius: 100%
+    -moz-border-radius: 100%
+    border-radius: 100%
+    color: #fff
+    font-size: 20px
+    text-align: center
+    line-height: 30px
+    position: absolute
+    top: -30px
+    right: -30px
+    cursor: pointer
+
+    &:hover
+      background: #1b41ff
+
+  form
+    font-family: Arial, 'Helvetica Neue', sans-serif
+    padding: 205px 23px 40px
+    color: #000
+    background: url('../images/backgound-image.jpg') no-repeat 1px 0 #fff
+    height: 100%
+    -moz-box-sizing: border-box
+    -webkit-box-sizing: border-box
+    box-sizing: border-box
+
+    ::-webkit-input-placeholder
+       color: #9f9f9f
+
+    :-moz-placeholder
+       color: #9f9f9f
+
+    ::-moz-placeholder
+       color: #9f9f9f
+
+    :-ms-input-placeholder
+       color: #9f9f9f
+
+    h1
+      color: #3c3c3c
+      font-size: 22px
+      text-transform: uppercase
+      margin: 0 0 15px
+      text-align: center
+
+    p
+      margin: 0 0 20px
+      font-size: 16px
+      text-align: center
+
+  .input-row
+    margin: 0 11px
+
+    + .input-row
+      margin-top: 20px
+
+  label
+    margin-bottom: 12px
+    display: block
+    font-family: Arial, 'Helvetica Neue', sans-serif
+    font-size: 16px
+
+  input
+    width: 310px
+    -moz-box-sizing: border-box
+    -webkit-box-sizing: border-box
+    box-sizing: border-box
+    font-family: Arial, 'Helvetica Neue', sans-serif
+    font-size: 16px
+
+  .input-text
+    height: 35px
+    border: 1px solid #cccccc
+    color: #262626
+    text-align: center
+
+    &:focus
+      border-color: #2643c8
+
+    + .input-text
+      margin-top: 10px
+
+  [type=submit]
+    height: 40px
+    border: 0
+    background: #0000ff
+    color: #fff
+    font-size: 16px
+    cursor: pointer
+
+    &:hover
+      background: #1b41ff
