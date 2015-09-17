@@ -1,21 +1,23 @@
+var del = require('del');
 var gulp = require('gulp');
+var sass = require('gulp-sass');
+var nano = require('gulp-cssnano');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var minify = require('gulp-minify');
+var postcss = require('gulp-postcss');
 var imagemin = require('gulp-imagemin');
-var sass = require('gulp-sass');
-var del = require('del');
+var autoprefixer = require('autoprefixer');
 
 var paths = {
   styles: 'src/assets/css/**/*.sass',
   scripts: 'src/assets/js/*.js',
   images: 'src/assets/images/**/*',
-  php: ['src/*.php', 'src/subscribe/**/*']
+  php: 'src/**/*.php'
 };
 
 // Cleans dist directory
 gulp.task('clean', function() {
-  return del(['dist']);
+  return del.sync(['dist']);
 });
 
 // Minify and copy SASS files
@@ -23,6 +25,8 @@ gulp.task('styles', function() {
   return gulp.src(paths.styles)
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('subscribe-popup.css'))
+    .pipe(postcss([ autoprefixer({browsers: ['last 3 versions']}) ]))
+    .pipe(nano())
     .pipe(gulp.dest('dist/css'));
 });
 
@@ -30,7 +34,6 @@ gulp.task('styles', function() {
 gulp.task('scripts', function() {
   return gulp.src(paths.scripts)
     .pipe(uglify())
-    .pipe(minify())
     .pipe(concat('subscribe-popup.min.js'))
     .pipe(gulp.dest('dist/js'));
 });
