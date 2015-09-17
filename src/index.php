@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Sendsay popup</title>
 
-  <link rel="stylesheet" href="dist/css/subscribe-popup.css">
+  <link rel="stylesheet" href="css/subscribe-popup.css">
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
@@ -35,7 +35,7 @@
     <div class="border"></div>
   </div>
 
-  <script src="dist/js/subscribe-popup.min.js"></script>
+  <script src="js/subscribe-popup.min.js"></script>
   <script>
     $('.subscribe-popup').subscribePopup({openAfter: 1, openOnce: false});
     $('#subscribe-popup-form').on('submit', function(e){
