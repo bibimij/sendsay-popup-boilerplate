@@ -38,25 +38,7 @@
 
   <script src="js/subscribe-popup.min.js"></script>
   <script>
-    $('.subscribe-popup-wrapper').subscribePopup({openAfter: 1, openOnce: false});
-    $('#subscribe-popup-form').on('submit', function(e){
-      e.preventDefault();
-
-      var $form = $(this);
-      var email = $('[name=email]').val();
-
-      $form.find(':submit').attr('disabled', true);
-
-      $.ajax({
-        url: $form.attr('action'),
-        type: $form.attr('method'),
-        data: $form.serialize(),
-        dataType: 'text',
-        success: function(response){
-          $form.html('<h1>Спасибо!</h1><p>На '+email+'<br>было отправлено письмо<br>подтверждения адреса.</p>');
-        }
-      });
-    });
+    $('.subscribe-popup-wrapper').subscribePopup();
   </script>
   <? endif; ?>
 
