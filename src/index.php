@@ -11,33 +11,34 @@
 <body>
 
   <? if(isset($_GET['popup'])): ?>
-  <div class="subscribe-popup">
-    <div class="subscribe-popup-close">×</div>
-    <div class="border"></div>
-    <form action="/shopping/subscribe/" method="post" id="subscribe-popup-form">
-      <h1>Подпишись на рассылку</h1>
-      <p>
-        и получи бесплатный доступ к уроку по созданию трех незаменимых и стильных образов для мужского гардероба
-      </p>
-      <div class="line"></div>
-      <div class="input-row">
-        <label for="subscribe-name">Ваше имя</label>
-        <input type="text" id="subscribe-name" name="name" required class="input-text" placeholder="Иван">
-      </div>
-      <div class="input-row">
-        <label for="subscribe-name">Ваш e-mail</label>
-        <input type="email" id="subscribe-email" name="email" required class="input-text" placeholder="ivan@mail.ru">
-      </div>
-      <div class="input-row">
-        <input type="submit" value="Подписаться">
-      </div>
-    </form>
-    <div class="border"></div>
-  </div>
+  <button class="subscribe-popup-wrapper">
+    <div class="subscribe-popup">
+      <div class="border"></div>
+      <form action="subscribe/" method="post" id="subscribe-popup-form">
+        <h1>Подпишись на рассылку</h1>
+        <p>
+          и получи бесплатный доступ к уроку по созданию трех незаменимых и стильных образов для мужского гардероба
+        </p>
+        <div class="line"></div>
+        <div class="input-row">
+          <label for="subscribe-name">Ваше имя</label>
+          <input type="text" id="subscribe-name" name="name" required class="input-text" placeholder="Иван">
+        </div>
+        <div class="input-row">
+          <label for="subscribe-name">Ваш e-mail</label>
+          <input type="email" id="subscribe-email" name="email" required class="input-text" placeholder="ivan@mail.ru">
+        </div>
+        <div class="input-row">
+          <input type="submit" value="Подписаться">
+        </div>
+      </form>
+      <div class="border"></div>
+    </div>
+  </button>
 
   <script src="js/subscribe-popup.min.js"></script>
   <script>
-    $('.subscribe-popup').subscribePopup({openAfter: 1, openOnce: false});
+    $('.subscribe-popup-wrapper').subscribePopup({openAfter: 1, openOnce: false});
     $('#subscribe-popup-form').on('submit', function(e){
       e.preventDefault();
 

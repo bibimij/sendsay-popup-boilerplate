@@ -25,7 +25,7 @@ gulp.task('styles', function() {
   return gulp.src(paths.styles)
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('subscribe-popup.css'))
-    .pipe(postcss([ autoprefixer({browsers: ['last 3 versions']}) ]))
+    .pipe(postcss([ autoprefixer({browsers: ['> 1%']}) ]))
     .pipe(nano())
     .pipe(gulp.dest('dist/css'));
 });
