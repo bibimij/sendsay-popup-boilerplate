@@ -5,9 +5,10 @@ if (empty($_POST)) {
   exit;
 }
 
+require_once 'config.php';
 require_once 'sendsay.php';
 
-$ss = new Sendsay('', '', '', TRUE);
+$ss = new Sendsay($login, $sublogin, $password);
 
 $email = $_POST['email']; // Электронная почта
 $data = array(
