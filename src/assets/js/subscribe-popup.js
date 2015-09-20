@@ -67,7 +67,6 @@ var SubscribePopup = function(element) {
       .on('submit', _this.$form, onSubscribeFormSubmit);
   };
 
-  mergeConfigs();
   autoOpen();
   bindEvents();
 };
