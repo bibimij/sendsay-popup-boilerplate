@@ -4,15 +4,20 @@ var SubscribePopup = function(element) {
   _this.$el = $(element);
   _this.$form = _this.$el.find('form');
 
+  var onAfterSubmit = function() {
+    _this.setCookie(settings.cookieLifeTime);
+  };
+
   var settings = {
-    cookieLifeTime: 365,
-    openAfter: 10000,
-    openOnce: true
+    cookieLifeTime: 365, // days
+    openAfter: 1, // seconds
+    openOnce: true,
+    onAfterSubmit: onAfterSubmit
   };
 
   var autoOpen = function() {
     if (settings.openAfter > 0) {
-      setTimeout(_this.open, settings.openAfter);
+      setTimeout(_this.open, settings.openAfter * 1000);
     }
   };
 
@@ -21,7 +26,7 @@ var SubscribePopup = function(element) {
   };
 
   var canOpen = function() {
-    return notOpenedOnce()
+    return notOpenedOnce();
   };
 
   this.open = function() {
@@ -58,6 +63,8 @@ var SubscribePopup = function(element) {
     });
 
     _this.$form.html('<h1>Спасибо!</h1><p>На '+email+'<br>было отправлено письмо<br>подтверждения адреса.</p>');
+
+    settings.onAfterSubmit();
   };
 
   var bindEvents = function() {
