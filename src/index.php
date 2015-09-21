@@ -36,7 +36,7 @@
     </div>
   </button>
 
-  <script src="js/subscribe-popup.min.js"></script>
+  <script src="js/subscribe-popup.js"></script>
   <script>
     $('.subscribe-popup-wrapper').subscribePopup();
   </script>
