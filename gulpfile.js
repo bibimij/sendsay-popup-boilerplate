@@ -3,6 +3,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var nano = require('gulp-cssnano');
 var concat = require('gulp-concat');
+var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var postcss = require('gulp-postcss');
 var imagemin = require('gulp-imagemin');
@@ -15,7 +16,7 @@ var paths = {
   php: 'src/**/*.php'
 };
 
-// Cleans dist directory
+// Clean dist directory
 gulp.task('clean', function() {
   return del.sync(['dist']);
 });
@@ -23,18 +24,22 @@ gulp.task('clean', function() {
 // Minify and copy SASS files
 gulp.task('styles', function() {
   return gulp.src(paths.styles)
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({outputStyle: 'expanded', sourceComments: true}).on('error', sass.logError))
     .pipe(concat('subscribe-popup.css'))
     .pipe(postcss([ autoprefixer({browsers: ['> 1%']}) ]))
+    .pipe(gulp.dest('dist/css'))
     .pipe(nano())
+    .pipe(rename('subscribe-popup.min.css'))
     .pipe(gulp.dest('dist/css'));
 });
 
 // Minify and copy all JavaScript
 gulp.task('scripts', function() {
   return gulp.src(paths.scripts)
+    .pipe(concat('subscribe-popup.js'))
+    .pipe(gulp.dest('dist/js'))
     .pipe(uglify())
-    .pipe(concat('subscribe-popup.min.js'))
+    .pipe(rename('subscribe-popup.min.js'))
     .pipe(gulp.dest('dist/js'));
 });
 
@@ -56,6 +61,6 @@ gulp.task('php', function() {
 gulp.task('build', ['clean', 'scripts', 'images', 'styles', 'php']);
 
 // Rerun the task when a file changes
-gulp.task('default', function() {
+gulp.task('default', ['build'], function() {
   gulp.watch('src/**/*', ['build']);
 });
