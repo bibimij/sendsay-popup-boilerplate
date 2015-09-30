@@ -13,7 +13,8 @@ var paths = {
   styles: 'src/assets/css/**/*.sass',
   scripts: 'src/assets/js/*.js',
   images: 'src/assets/images/**/*',
-  php: 'src/**/*.php'
+  php: 'src/**/*.php',
+  fonts: 'src/assets/fonts/**/*'
 };
 
 // Clean dist directory
@@ -57,8 +58,14 @@ gulp.task('php', function() {
     .pipe(gulp.dest('dist'));
 });
 
+// Copy all fonts
+gulp.task('fonts', function() {
+  return gulp.src(paths.fonts, {base: 'src/assets/fonts'})
+    .pipe(gulp.dest('dist/fonts'));
+});
+
 // Run building all files
-gulp.task('build', ['clean', 'scripts', 'images', 'styles', 'php']);
+gulp.task('build', ['clean', 'scripts', 'images', 'styles', 'php', 'fonts']);
 
 // Rerun the task when a file changes
 gulp.task('default', ['build'], function() {

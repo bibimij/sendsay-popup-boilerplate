@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "Popups with sendsay support",
   "main": "gulpfile.js",
-  "scripts": {
-    "init": "npm install",
-    "dev": "gulp"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bibimij/sendsay-popup-boilerplate.git"
@@ -37,7 +33,8 @@
   },
   "config": {
     "ghooks": {
-      "pre-commit": "echo \"$(git diff --stat --cached --color)\""
+      "pre-commit": "echo \"$(git diff --stat --cached --color)\"",
+      "post-merge": "npm install"
     }
   }
 }
