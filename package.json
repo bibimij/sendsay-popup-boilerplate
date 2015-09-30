@@ -34,7 +34,7 @@
   "config": {
     "ghooks": {
       "pre-commit": "echo \"$(git diff --stat --cached --color)\"",
-      "post-merge": "npm install"
+      "post-merge": "npm install && echo 'npm install done\n'"
     }
   }
 }
